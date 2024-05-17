@@ -1,0 +1,9 @@
+SELECT AdministrationID, ConnectedDoseFlag, PrimingDose
+   FROM   (
+            SELECT AdministrationID,
+                   1 AS ConnectedDoseFlag,
+                   PrimingDose,
+                   ROW_NUMBER() OVER (Partition by AdministrationID ORDER BY ModifiedDateTime DESC) AS RecentRecFlag
+            FROM   [whitelabel_db].[Observation].InsulinDeviceDetail idd
+          ) dupDoses
+   WHERE  RecentRecFlag = 1
