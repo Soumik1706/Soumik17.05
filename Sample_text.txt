@@ -7,3 +7,5 @@ SELECT AdministrationID, ConnectedDoseFlag, PrimingDose
             FROM   [whitelabel_db].[Observation].InsulinDeviceDetail idd
           ) dupDoses
    WHERE  RecentRecFlag = 1
+
+SOIumik l042451
